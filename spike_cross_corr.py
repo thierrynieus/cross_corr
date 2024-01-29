@@ -1,6 +1,5 @@
 import numpy as np
 
-
 params = {'dt': 0.5, 'tw': 5, 'tmax': 6e5, 'corr': True}
 
 
