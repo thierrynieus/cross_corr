@@ -1,7 +1,7 @@
 # Spike cross-correlation module
 
 
-The repository is designed for efficient spike cross-correlation calculations.
+The repository is designed for efficient spike cross-correlation calculations. It uses the mo
 
 ## File description
 1. spike_cross_corr.py, a module to load and compute cross-correlations
