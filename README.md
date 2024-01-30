@@ -4,17 +4,17 @@
 The repository is designed for efficient spike cross-correlation calculations.
 
 ## File description
-1. spike_cross_corr.py, a module to load and compute cross-correlations 
+1. spike_cross_corr.py, a module to load and compute cross-correlations
 2. cross_corr_demo1.ipynb, a demo to illustrate how to use the module
 
 Parameters of spike_cross_corr.py:
 ````
-params = {'dt': 0.5, 'tw': 5, 'tmax': 6e5, 'corr': True}     
+params = {'dt': 0.5, 'tw': 5, 'tmax': 6e5, 'corr': True}
 ````
-'dt' is the time resolution to use for spike cross-correlation
-'tw' is the time window ([-tw, +tw]) on which the correlation has to be computed 
-'tmax' is the duration of recording, by default it is estimated from the data 
-'corr' if True (default), 'tmax' will be adjusted (see before)
+1. 'dt' is the time resolution to use for spike cross-correlation
+2. 'tw' is the time window ([-tw, +tw]) on which the correlation has to be computed 
+3. 'tmax' is the duration of recording, by default it is estimated from the data 
+4. 'corr' if True (default), 'tmax' will be adjusted (see before)
 
 
 ## Functions
