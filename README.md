@@ -3,6 +3,8 @@
 
 The repository is designed for efficient spike cross-correlation calculations. It uses the module joblib to split the calculations on different cores.
 
+NOTE: Have a look to @FMarmoreo 's implementation! 
+
 ## File description
 1. spike_cross_corr.py, a module to load and compute cross-correlations
 2. cross_corr_demo1.ipynb, a demo to illustrate how to use the module
