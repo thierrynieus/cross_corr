@@ -3,7 +3,7 @@
 
 The repository is designed for efficient spike cross-correlation calculations. It uses the module joblib to split the calculations on different cores.
 
-NOTE: Have a look to @FMarmoreo 's implementation! 
+NOTE: Have a look to @FMarmoreo 's implementation based on sparse matrix (https://github.com/FMarmoreo/cross_spike_train/blob/main/spike_train.ipynb)
 
 ## File description
 1. spike_cross_corr.py, a module to load and compute cross-correlations
