@@ -6,6 +6,7 @@ The repository is designed for efficient spike cross-correlation calculations. I
 ## File description
 1. spike_cross_corr.py, a module to load and compute cross-correlations
 2. cross_corr_demo1.ipynb, a demo to illustrate how to use the module
+3. cross_corr_demo2.ipynb, a demo to illustrate the performances of the extremely faster calc_cc_sp function by F Marmoreo.
 
 Parameters of spike_cross_corr.py:
 ````
@@ -32,3 +33,5 @@ If you use the code in your own work please cite the following publication:
 
 Nieus, T., D’Andrea, V., Amin, H., Di Marco, S., Safaai, H., Maccione, A., et al. (2018). State-dependent representation of stimulus-evoked activity in high-density recordings of neural cultures. Sci Rep 8, 5578. doi: 10.1038/s41598-018-23853-x.
 
+
+NOTE: The module now includes the much faster algorithm by F Marmoreo.

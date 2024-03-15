@@ -1,3 +1,10 @@
+"""
+In the current version it includes the function <<calc_cc_sp>> by F Marmoreo
+see:
+    https://github.com/FMarmoreo/cross_spike_train/blob/main/spike_train.ipynb
+"""
+
+
 import numpy as np
 
 params = {'dt': 0.5, 'tw': 5, 'tmax': 6e5, 'corr': True}
@@ -80,3 +87,37 @@ def run_cross_par(idx_spk_tr, len_spk_tr, n_jobs=4):
     print('cross-corr computed in %g seconds' % (time.time()-t0))
     tcc = np.arange(-params['tw'], params['tw'] + params['dt'], params['dt'])
     return cc_lst, idx_sd, tcc
+
+
+def calc_cc_sp(idx_spk_tr, len_spk_tr, params):
+    """
+    compute cross correletions between channels.
+
+    return KxMxM matrix. K time delays, M channels
+    """
+    import time
+    from scipy.sparse import csr_matrix, lil_matrix
+    
+    timo = time.time()
+    max_idx = np.max([np.max(i) for i in idx_spk_tr])
+    num_trains = len(idx_spk_tr)
+    nstep = int(params['tw'] / params['dt'])
+    padded = lil_matrix((len(idx_spk_tr),max_idx+2*nstep+1))
+    ccmat= np.zeros((nstep*2+1,num_trains,num_trains))
+    for i in range(num_trains):
+        padded[i,(idx_spk_tr[i]-1+nstep)]=1
+    padded = csr_matrix(padded)
+    ref = padded[:,nstep:-(nstep+1)]
+    
+    sizes = np.array(len_spk_tr)
+    sizes = sizes.reshape(len(sizes), 1)
+    lijs = csr_matrix(sizes.dot(sizes.T))
+    lijs_sc = (lijs/params['tmax'])*params['dt']
+    for k in range(nstep*2+1): 
+        ccmat_ = ref.dot(padded[:,k:(max_idx+k)].T)
+        ccmat_ -= lijs_sc
+        ccmat_ /=  lijs.sqrt()
+        ccmat[k] = ccmat_
+    print('cross-corr computed in {:.2f} seconds \n'.format(time.time()-timo))
+
+    return ccmat
